@@ -1,0 +1,54 @@
+*{
+	margin: 0;padding: 0;list-style: none;
+}
+#banner{
+	width: 975px;height: 378px;margin: 100px auto 0;
+	box-shadow:0 0 3px #666 ; padding: 12px 12px 0 12px;
+}
+#banner .pic{
+	width: 975px;height: 340px;background: red;position: relative;
+}
+#banner .pic ul li{
+	position: absolute;left: 0;top:0;display: none;
+}
+#banner .title{
+	width: 760px;height: 38px;margin:auto;position: relative;
+}
+#banner .title ul li{
+	width: 190px;height: 38px;float: left;position: relative;
+	text-align: center;font-size: 12px;color: #666;font-family: "微软雅黑";line-height: 38px;
+}
+#banner .title ul li:after{
+	content: "|";/*在li后面加的内容*/
+	position: absolute;right: 0;
+}
+#banner .title ul li:last-child:after{
+	content: "";/*清空最后一个的内容*/
+}
+
+#banner .title .exc{
+	width: 190px;height: 3px;background: red;position: absolute;top: 38px;left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
