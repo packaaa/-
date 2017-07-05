@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+div{
+  width: 500px;
+  height: 200px;
+  margin: 55px auto;
+  background: green;
+padding-top: 20px;
+text-align: center;
+}
+
+        </style>
+        <script src="ajax.js"></script>
+    </head>
+    <body>
+<div>
+  <input type="text" id="id">
+  <input type="button" value="查询" id="btn">
+  <span id="info"></span>
+</div>
+
+
+    <script>
+    window.onload=function(){
+
+      var btn=document.getElementById("btn");
+      btn.onclick=function(){
+        var info=document.getElementById("info");
+        var id=document.getElementById("id").value;
+       
+        ajax("ajax_fz.php","get","name="+id,"json",function(data){
+          if (data.flag==0) {
+info.innerHTML="没有这本书";
+          }else{
+            var tag="<ul><li>书名："+data.bookname+"</li><li>作者："+data.author+"</li><li>简介："+data.desc+"</li></ul>"
+            info.innerHTML=tag;
+          };
+        })
+          };
+       
+    }
+    </script>
+    </body>
+</html>

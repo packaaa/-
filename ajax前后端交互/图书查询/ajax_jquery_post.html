@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+              div{
+  width: 500px;
+  height: 200px;
+  margin: 55px auto;
+  background: green;
+padding-top: 20px;
+text-align: center;
+}
+</style>
+    </head>
+    <body>
+    <div>
+    <input type="text" id="id">
+  <input type="button" value="查询" id="btn">
+  <span id="info"></span></div>
+    </body>
+    <script src="jquery-1.12.2.js"> </script>
+    <script>
+$(function(){
+  $("#btn").click(function(){
+    $.ajax({
+      url: 'ajax_jquery_post.php',
+      type: 'post',
+      dataType: 'json',
+      data: {name: $("#id").val()},
+    })
+    .done(function(data) {
+     if (data.flag==0) {
+      $("#info").html("出错了")
+     }else{
+      $("#info").html("<ul><li>书名："+data.bookname+"</li><li>作者："+data.author+"</li><li>简介："+data.desc+"</li></ul>")
+     };
+    })
+    .fail(function(data) {
+      $("#info").html("后台出错了")
+    })
+    
+    
+  })
+})
+
+
+    </script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/1.0.2/Konva.js"></script>
+</head>
+<body>
+  <div id="dv"></div>
+</body>
+<script>
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  var stage = new Konva.Stage({
+    container: 'dv',
+    width: width,
+    height: height
+  });
+  var layer = new Konva.Layer();
+  stage.add( layer );
+  
+  // 创建文本
+  var txt = new Konva.Text({
+    x: 100, y: 100,
+    align: 'left',
+    text: '测试文本',
+    fontSize: 30,
+    padding: 10,
+    width: 200,
+    height: 200
+    
+  });
+  layer.add( txt );
+
+
+  var rect = new Konva.Rect({
+    x: 100, y: 100,
+    width: 200, height: 200,
+    stroke: 'red'
+  });
+  layer.add( rect );
+
+
+  layer.draw();
+</script>
+</html>

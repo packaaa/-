@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/1.0.2/Konva.js"></script>
+</head>
+<body>
+  <div id="dv"></div>
+</body>
+<script>
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  var stage = new Konva.Stage({
+    container: 'dv',
+    width: width,
+    height: height
+  });
+  var layer = new Konva.Layer();
+  stage.add( layer );
+  
+  var trangle = new Konva.Shape({
+    sceneFunc: function ( ctx ) {
+      // 自定义绘图路径
+      ctx.moveTo( window.innerWidth / 2, window.innerHeight / 4 );
+      ctx.lineTo( window.innerWidth / 2 - window.innerHeight / ( 2 * 1.732 ), window.innerHeight * 3 / 4 );
+      ctx.lineTo( window.innerWidth / 2 + window.innerHeight / ( 2 * 1.732 ), window.innerHeight * 3 / 4 );
+      ctx.closePath();
+      // Konva.js 的独有方法
+      ctx.fillStrokeShape( this );
+    },
+    fill: 'pink',
+    stroke: 'red'
+  });
+
+  layer.add( trangle );
+
+
+  layer.draw();
+</script>
+</html>

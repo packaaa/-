@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/1.0.2/Konva.js"></script>
+</head>
+<body>
+  <div id="dv"></div>
+</body>
+<script>
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  var stage = new Konva.Stage({
+    container: 'dv',
+    width: width,
+    height: height
+  });
+  var layer = new Konva.Layer();
+  stage.add( layer );
+  
+  var circle = new Konva.Circle({
+    x: width / 2,
+    y: height / 2,
+    radius: 100,
+    fill: 'red',
+    opacity: 0.5,
+    draggable: true
+  });
+
+  layer.add( circle );
+
+  circle.on( 'mouseout touchend', function () {
+    console.log( '用户输入' );
+  });
+  circle.on( 'xChange', function () {
+    console.log( '位置发生改变' );
+  });
+  circle.on( 'dragend', function () {
+    console.log( '拖动停止' );
+  });
+
+
+  layer.draw();
+</script>
+</html>

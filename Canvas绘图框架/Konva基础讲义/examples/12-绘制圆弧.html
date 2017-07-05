@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/1.0.2/Konva.js"></script>
+</head>
+<body>
+  <div id="dv"></div>
+</body>
+<script>
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  var stage = new Konva.Stage({
+    container: 'dv',
+    width: width,
+    height: height
+  });
+  var layer = new Konva.Layer();
+  stage.add( layer );
+  
+  var ring = new Konva.Ring({
+    x: width / 2,
+    y: height / 2,
+    innerRadius: 50,
+    outerRadius: 100,
+    fill: 'pink',
+    stroke: 'blue',
+  });
+  layer.add( ring );
+
+
+
+  layer.draw();
+</script>
+</html>

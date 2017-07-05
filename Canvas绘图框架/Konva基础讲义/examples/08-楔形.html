@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/1.0.2/Konva.js"></script>
+</head>
+<body>
+  <div id="dv"></div>
+</body>
+<script>
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  var stage = new Konva.Stage({
+    container: 'dv',
+    width: width,
+    height: height
+  });
+  var layer = new Konva.Layer();
+  stage.add( layer );
+  
+  var data = [ .3, .4, .2, .1 ];
+  var colors = 'red,pink,green,blue'.split( ',' );
+  var startAngle = -90;
+  data.forEach( function ( v, i ) {
+    var wedge = new Konva.Wedge({
+      x: stage.getWidth() / 2,
+      y: stage.getHeight() / 2,
+      radius: 100,
+      angle: 360 * v,
+      rotation: startAngle,
+      fill: colors[ i ],
+      opacity: .8
+    });
+
+    startAngle += 360 * v;
+    layer.add( wedge );
+  });
+
+
+
+  layer.draw();
+</script>
+</html>

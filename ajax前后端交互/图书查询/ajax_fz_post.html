@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <style>
+div{
+  width: 500px;
+  height: 200px;
+  margin: 55px auto;
+  background: green;
+padding-top: 20px;
+text-align: center;
+}
+
+        </style>
+    </head>
+    <body>
+    <div>
+    <input type="text" id="id">
+  <input type="button" value="查询" id="btn">
+  <span id="info"></span></div>
+    </body>
+    <script src="ajax.js"></script>
+    <script>
+window.onload=function(){
+  var btn=document.getElementById("btn");
+  btn.onclick=function(){
+  var info=document.getElementById("info");
+    var val=document.getElementById("id").value;
+    ajax("ajax_fz.php","post","name="+val,"json",function(data){
+      if (data.flag==1) {
+        info.innerHTML="出错了";
+      }else{
+        info.innerHTML="<ul><li>书名："+data.bookname+"</li><li>作者："+data.author+"</li><li>简介："+data.desc+"</li></ul>"
+      };
+    })
+  }
+}
+    </script>
+</html>

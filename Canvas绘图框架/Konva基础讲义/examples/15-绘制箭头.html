@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/1.0.2/Konva.js"></script>
+</head>
+<body>
+  <div id="dv"></div>
+</body>
+<script>
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  var stage = new Konva.Stage({
+    container: 'dv',
+    width: width,
+    height: height
+  });
+  var layer = new Konva.Layer();
+  stage.add( layer );
+
+  var rect1 = new Konva.Rect({
+    x: width / 4 - 50,
+    y: height / 4 - 25,
+    stroke: '#000',
+    width: 100,
+    height: 50,
+    fill: 'pink',
+    opacity: .5
+  });
+  layer.add( rect1 );
+
+  var txt1 = new Konva.Text({
+    x: width / 4 - 50,
+    y: height / 4 - 6,
+    fontSize: 12,
+    text: 'Object 构造函数',
+    align: 'center',
+    width: 100,
+    height: 50
+  });
+  layer.add( txt1 );
+
+
+
+
+  var rect2 = new Konva.Rect({
+    x: width * 3 / 4 - 50,
+    y: height * 3 / 4 - 25,
+    stroke: '#000',
+    width: 100,
+    height: 50,
+    fill: 'pink',
+    opacity: .5
+  });
+  layer.add( rect2 );
+
+  var txt2 = new Konva.Text({
+    x: width * 3 / 4 - 50,
+    y: height * 3 / 4 - 6,
+    fontSize: 12,
+    text: 'Object.prototype',
+    align: 'center',
+    width: 100,
+    height: 50
+  });
+  layer.add( txt2 );
+
+
+  var arrow = new Konva.Arrow({
+    points: [ 
+      width / 4 + 50,
+      height / 4,
+      
+      width / 2,
+      height / 4,
+
+      width / 2,
+      height * 3 / 4,
+
+      width * 3 / 4 - 50 - 7,
+      height * 3 / 4
+    ],
+    pointerLength: 15,
+    pointerWidth: 6,
+    fill: '#ccc',
+    stroke: '#ccc',
+    lineWidth: .7
+  });
+
+  layer.add( arrow );
+
+
+
+
+
+
+
+
+
+
+  layer.draw();
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="../src/1.0.2/Konva.js"></script>
+</head>
+<body>
+  <div id="dv"></div>
+</body>
+<script>
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  var stage = new Konva.Stage({
+    container: 'dv',
+    width: width,
+    height: height
+  });
+  var layer = new Konva.Layer();
+  stage.add( layer );
+
+  var r = 100;  
+  var c1 = new Konva.Circle({
+    x: stage.getWidth() / 8,
+    y: stage.getHeight() / 2,
+    radius: r,
+    fill: 'red',
+    stroke: '#000',
+    id: 'c1'
+  });
+  layer.add( c1 );
+
+  var c2 = new Konva.Circle({
+    x: stage.getWidth() / 8 * 3,
+    y: stage.getHeight() / 2,
+    radius: r,
+    fill: 'red',
+    stroke: '#000',
+    name: 'c'
+  });
+  layer.add( c2 );
+
+  var c3 = new Konva.Circle({
+    x: stage.getWidth() / 8 * 5,
+    y: stage.getHeight() / 2,
+    radius: r,
+    fill: 'red',
+    stroke: '#000',
+    name: 'c'
+  });
+  layer.add( c3 );
+
+  var c3 = new Konva.Circle({
+    x: stage.getWidth() / 8 * 7,
+    y: stage.getHeight() / 2,
+    radius: r,
+    fill: 'red',
+    stroke: '#000'
+  });
+  layer.add( c3 );
+
+  layer.find( '.c' ).each(function ( v, i ) {
+    v.fill( 'pink' );
+  });
+  
+  layer.find( '#c1' ).forEach(function ( v, i ) {
+    v.stroke( 'blue' );
+    v.strokeWidth( 10 );
+  });
+
+  layer.find( 'Circle' ).each( function ( v, i ) {
+    v.stroke( 'green' );
+  });
+
+
+  layer.draw();
+</script>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="jquery.js"></script>
+        <script>
+$(function(){
+  function updateData(id){
+$.ajax({
+  type:"post",
+  url:"bookInfo.php",
+  data:{flag:3,id:id},
+  dataType:"json",
+  success:function(data){
+    $("#id").val(data.id);
+    $("#bookName").val(data.bookName);
+    $("#bookAuthor").val(data.bookAuthor);
+    $("#formId input[name=recomment][value="+data.recommend+"]").prop("checkbox",true);
+    $("#formId input:checkbox").prop("checked",false);
+    var arr=data.category.split(",");
+    $each(arr,function(i,e){
+$("#formId input[value="+Number(e)+":checkbox]").prop("checked",true)
+    });
+    $("#bookDesc").val(data.bookDesc);
+    $("#btn").unbind("click").click(
+      function(){
+        var formData=$("#formId").serialize();
+        formData+="&flag=4";
+        $.ajax({
+          type:"post",
+          url:"bookInfo.php",
+          data:formData,
+          dataType:"json",
+          success:function(data){
+renderData(data);
+          }
+
+        })
+      })
+  }
+})
+  }
+
+
+
+//渲染数据
+function renderData(data){
+  var tag="";
+  $.each(data,function(i,e){
+    tag += '<tr><td>'+e.id+'</td><td>'+e.bookName+'</td><td>'+e.bookAuthor+'</td><td>'+e.category+'</td><td>'+e.recommend+'</td><td>'+e.bookDesc+'</td><td><a href="javascript:;">修改</a>|<a href="javascript:;">删除</a></td></tr>';
+
+
+
+  })
+  $("#bookList tbody").html(tag)
+//修改，删除绑定
+$("#bookList tbody tr").each(function(i,e){
+var td=$(e).find("td:eq(6)");
+
+var id=$(e).find("td:eq(0)").text();
+
+//修改绑定
+td.find("a:eq(0)").click(function(){
+  updateData(id);
+})
+//删除绑定
+td.find("a:eq(1)").click(function() {
+  
+  $.ajax({
+    type:"post",dataType:"json",
+    url:"bookInfo.php",
+    data:{flag:2,id:id},
+    success:function(data){
+renderData(data);
+    }
+  })
+});
+})
+//重置表单
+$("#formId").get(0).reset();
+//给表单注册绑定事件
+$("#btn").unbind("click").click(function(){
+  var formData=$("#formId").serialize();
+  formData+="&flag=1";
+  $.ajax({
+    type:"post",
+    url:"bookInfo.php",
+    data:formData,
+    dataType:"json",
+    success:function(data){
+      renderData(data);
+    }
+  })
+})
+}
+  //数据加载初始化
+  function initList(){
+    $.ajax({
+      type:"post",
+      url:"bookInfo.php",
+      data:{flag:0},
+      dataType:"json",
+      success:function(data){
+     renderData(data);
+      }
+    })
+  }
+  initList()
+
+
+
+
+})
+
+
+
+
+        </script>
+    </head>
+    <body>
+    <div id="infoArea">
+        <form id="formId">
+            <div id="opeInfo">图书信息管理</div>
+            <div>
+                <input type="hidden" id="id" name="id">
+                <span>图书名称</span>
+                <span><input type="text" id="bookName" name="bookName"></span>
+            </div>
+            <div>
+                <span>图书作者</span><span>
+                <input type="text" id="bookAuthor" name="bookAuthor"></span>
+            </div>
+            <div><span>是否推荐</span>
+                <span>
+                    是<input type="radio" name="recommend" value="1">
+                    否<input type="radio" name="recommend" value="2">
+                </span>
+            </div>
+            <div>
+                <span>图书分类</span>
+                <span>
+                    <input type="checkbox" name="category[]" value="1">计算机
+                    <input type="checkbox" name="category[]" value="2">文学
+                    <input type="checkbox" name="category[]" value="3">会计
+                </span>
+            </div>
+            <div>
+                <span>图书描述</span>
+                <textarea id="bookDesc" name="bookDesc" rows="3" cols="20"></textarea>
+            </div>
+            <div>
+                <input id="btn" type="button" value="提交">
+            </div>
+        </form>
+    </div>
+    <div id="bookList">
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>图书名称</th>
+                    <th>图书作者</th>
+                    <th>图书分类</th>
+                    <th>是否推荐</th>
+                    <th>图书描述</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>1</td>
+                    <td>三国演义</td>
+                    <td>罗贯中</td>
+                    <td>文学</td>
+                    <td>是</td>
+                    <td>杀伐纷争的年代</td>
+                    <td><a href="javascript:;">修改</a>|<a href="javascript:;">删除</a></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    </body>
+</html>
