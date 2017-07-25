@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <input type="button" value="添加" ><br>
+    <input type="button" value="删除"><input type="text" id='val'placeholder="请输入要删除的字"><br>
+    <input type="button" value="修改"><input type="text"id='val1' placeholder="点击修改获取内容"><br>
+    <input type="button" value="查询"><input type="text" placeholder="请输入要查询的字" id='val2'><br>
+    </body>
+    <script>
+var add=document.getElementsByTagName('input');
+add[0].onclick=(e)=>{
+  var add1=document.createElement('h1');
+add1.innerHTML='我创造了元素H1';
+document.querySelector('body').appendChild(add1);
+
+add[0].disabled="true";
+
+};
+
+// add1.innerText('我创造了元素H1');
+
+add[1].onclick=()=>{
+if (document.querySelector('h1')===null) {alert('先点击添加元素');return};
+var del=document.querySelector('#val').value||"";
+var h=document.querySelector('h1').innerText || "";
+var a=h.replace(del,"")
+document.querySelector('h1').innerText=a;
+/*let num=h.indexOf(del);
+ var a=h.split("").splice(num,del.length);*/
+
+
+}
+
+add[3].onclick=()=>{if (document.querySelector('h1')===null) {alert('先点击添加元素');return};
+  document.querySelector('#val1').value=document.querySelector('h1').innerText;
+
+    document.querySelector('#val1').onkeyup=()=>{
+    document.querySelector('h1').innerText= document.querySelector('#val1').value
+
+   
+  }
+ }
+   
+
+   
+
+add[5].onclick=()=>{if (document.querySelector('h1')===null) {alert('先点击添加元素');return};
+  var r=add[6].value
+var t=document.querySelector('h1').innerText.indexOf(add[6].value);
+if (t==-1||r=="") {console.log(t)
+  add[6].value=r+'不在范围内,请重新输入';
+  return;
+};
+add[6].value=r+'在第'+Number(t+1)+'位';
+
+}
+ add[6].onfocus=()=>{
+  add[6].value="";
+}
+
+
+
+
+    </script>
+</html>
