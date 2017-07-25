@@ -14,6 +14,7 @@ f
 \n  换行
 
 
+
 css
 三角
 width:0px; height:0px; overflow:hidden; border-width:10px; border-color:transparent transparent yellow transparent; border-style:dashed dashed solid dashed; 
@@ -350,6 +351,32 @@ meta标签：
 <meta name="x5-page-mode" content="app">
 <!-- windows phone 点击无高光 -->
 
+//①页面加载完之前执行,与嵌入的js加载方式一样
+(function ($) {
+    alert('start');
+})(jquery);
 
+//②页面加载后执行
+$(document).ready(function(){
+    alert('jquery ready');
+});
+
+//③页面加载后执行
+
+$(function(){
+    alert('jquery onload'); 
+});
+
+//④页面加载后执行
+
+jQuery(function($) {
+
+  alert('jQuery ready ');
+
+});
+
+
+翻转字符串：
+String.prototype.split()Array.prototype.reverse()Array.prototype.join()
 
 

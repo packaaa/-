@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  .a{
+    height: 200px;
+    width: 200px;
+    background: #f40;
+    overflow: hidden;
+    transition:all 1.5s;
+    position: relative;
+  }
+  .a:hover{
+     background: rgba(0,0,0,0.45);
+  }
+  .a:hover .b{
+bottom:0px;
+transform:rotate(360deg) scale(1.8);
+/*transform:scale(1.3);*/
+
+
+  }
+
+
+
+  .b{
+
+     transition:all 1s 0.5s;
+     position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    bottom:-170px;
+  }
+
+
+</style>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div class="a">
+      <div class="b">
+        <h1>haha</h1>
+        <p>this is a test</p>
+      </div>
+    </div>
+    </body>
+</html>

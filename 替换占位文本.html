@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+    <script>
+str='<div id={{id}} name={{name}}> </div>';
+use={
+  id:1233,
+  name:"aaa"
+}
+
+template(str ,use)
+function template(str ,use){
+	var a;
+  for( var k in use){
+
+   // 第一种：str= str.replace("{{"+k+"}}",use[k]);
+ // 第二种：
+   str=str.replace(new RegExp("{{"+k+"}}","g"),use[k]);
+
+  }
+
+  console.log(str) ;
+
+}
+
+
+    </script>
+</html>
