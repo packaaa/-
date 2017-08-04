@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+      <p>1.下面程序输出什么?<br>
+      console.log(typeof null) &nbsp; object<br>
+      console.log(typeof undefined) &nbsp; undefined<br>
+      console.log(typeof []) &nbsp; object<br>
+      console.log(NaN==NaN)  &nbsp; false<br>
+      console.log("A"+"B"+1) &nbsp; "AB1"<br>
+      console.log("A"+"B"-1) &nbsp; NaN<br>
+      console.log(0.1+0.2) &emsp; 0.30000000000000004<br>
+    
+      </p>
+      2. 下面程序是按顺序输出0 1 2 3 4吗？如果不是怎么修改？
+      for(arr i=1;i<4;i++){ <br>
+      setTimeout(function(){<br>
+      console.log(i) <br>
+      },0)<br>
+      } <br>
+
+
+
+    </body>
+    <script>
+    //第二题 
+      for(var i=0;i<5;i++){setTimeout((function(i){return console.log(i)})(i),0)}
+
+//一秒钟出现一次
+for (var i = 1; i <= 5; i++) {
+    (function(i){
+        setTimeout( function timer() {
+              console.log(i);
+          }, i * 1000 );
+    })(i);
+}
+  //方法二
+  for(let i=1;i<=5;i++){setTimeout(function(){console.log(i);},i*1000)}
+
+
+
+    (function(){var a=b=5;})();console.log(a)//a=undefined b=5
+    var a="er1a11ty345fghj45235k";
+    var e=/\d/g;
+    var arr=[];
+    while(b=e.exec(a)){
+arr.push(b)
+    }
+ //排序sort默认从大到小
+   /* console.log(arr.sort())
+    // document.write(arr) 
+    document.write( arr.sort(function(a,b){
+      return b-a
+    })) */
+var ru=''
+    arr.forEach(function(e,i){
+      for(var i=0; i<arr.length;i++){
+        if (arr[i]>[i+1]) {
+       ru= arr[i];
+       arr[i]=arr[i+1];
+       arr[ i+1]=ru
+
+      }
+      
+
+      };
+      
+    })
+    console.log(arr)
+    </script>
+</html>
