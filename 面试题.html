@@ -145,9 +145,14 @@ function template(str ,use){
  // 第二种：
    str=str.replace(new RegExp("{{"+k+"}}","g"),use[k]);
 
-  }*/
+  }
 
-  console.log(str) ;
+  console.log(str) ;*/
+//函数作用域问题
+//var a=10; function b(){a=1; function a(){};}b();console.log(a)
+//结果是 10
 
+//var a=10; function b(){a=1;}b();console.log(a)
+// 结果是： 1
     </script>
 </html>
