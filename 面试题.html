@@ -12,6 +12,7 @@
       console.log("A"+"B"+1) &nbsp; "AB1"<br>
       console.log("A"+"B"-1) &nbsp; NaN<br>
       console.log(0.1+0.2) &emsp; 0.30000000000000004<br>
+      console.log({}=={})&emsp;   fasle
     
       </p>
       2. 下面程序是按顺序输出0 1 2 3 4吗？如果不是怎么修改？
@@ -21,12 +22,20 @@
       },0)<br>
       } <br>
 
+<p>实现跨域的几种方式：<br>
+1. jsonp  动态创建'script'标签；<br>
+2. 利用服务器在进行数据请求，转换成同源的形式进行数据请求；<br>
+3. 利用'window.name'<br>
+4. 利用h5新增的'window.postMessage'<br>
 
+
+
+</p>
 
     </body>
     <script>
     //第二题 
-      for(var i=0;i<5;i++){setTimeout((function(i){return console.log(i)})(i),0)}
+      // for(var i=0;i<5;i++){setTimeout((function(i){return console.log(i)})(i),0)}
 
 //一秒钟出现一次
 for (var i = 1; i <= 5; i++) {
@@ -37,7 +46,7 @@ for (var i = 1; i <= 5; i++) {
     })(i);
 }
   //方法二
-  for(let i=1;i<=5;i++){setTimeout(function(){console.log(i);},i*1000)}
+  /*for(let i=1;i<=5;i++){setTimeout(function(){console.log(i);},i*1000)}
 
 
 
@@ -47,14 +56,14 @@ for (var i = 1; i <= 5; i++) {
     var arr=[];
     while(b=e.exec(a)){
 arr.push(b)
-    }
+    }*/
  //排序sort默认从大到小
    /* console.log(arr.sort())
     // document.write(arr) 
     document.write( arr.sort(function(a,b){
       return b-a
     })) */
-var ru=''
+/*var ru=''
     arr.forEach(function(e,i){
       for(var i=0; i<arr.length;i++){
         if (arr[i]>[i+1]) {
@@ -68,6 +77,77 @@ var ru=''
       };
       
     })
-    console.log(arr)
+    console.log(arr)*/
+
+
+
+    
+    //去重的几种方式
+    //方法一
+    /*var arr=[1,2,3,4,5,2];
+    var arr1=[];
+    for(var i=0;i<arr.length;i++){
+      if (arr1.indexOf(arr[i])==-1) {
+        arr1.push(arr[i])
+      };
+    }
+    console.log(arr1)*/
+
+
+
+
+    //方法二
+    /*var arr=[1,2,3,4,5,2];
+    var arr1={};
+    var arr2=[];
+    for(var i in arr){
+      if (!arr1[arr[i]]) {
+        arr2.push(arr[i])
+        arr1[arr[i]]=1;
+      };
+    }
+console.log(arr2)*/
+
+
+
+
+
+//方法三
+/*var arr=[1,2,3,4,5,2];
+var arr1=[];
+var arr2={};
+arr.map(function(e,i){
+if (!arr2[e]) {
+  arr1.push(e);
+  arr2[e]=1;
+
+};
+})
+console.log(arr1)*/
+
+
+
+//文本占位符：把str中的文本占位符替换成use对象中的数据
+
+
+/*str='<div id={{id}} name={{name}}> </div>';
+use={
+  id:1233,
+  name:"aaa"
+}
+
+template(str ,use)
+function template(str ,use){
+  var a;
+  for( var k in use){
+
+   // 第一种：str= str.replace("{{"+k+"}}",use[k]);
+ // 第二种：
+   str=str.replace(new RegExp("{{"+k+"}}","g"),use[k]);
+
+  }*/
+
+  console.log(str) ;
+
     </script>
 </html>
